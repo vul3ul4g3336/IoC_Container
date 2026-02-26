@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5A2FD6AB-CF5C-4242-A960-8791B090F7A5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>IoC_Container</RootNamespace>
     <AssemblyName>IoC_Container</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,11 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarFactory\TeslaFactory.cs" />
+    <Compile Include="CarFactory\HouseFactory.cs" />
+    <Compile Include="CarFactory\IFactory.cs" />
+    <Compile Include="Car\BANZ.cs" />
+    <Compile Include="Car\BMW.cs" />
+    <Compile Include="Car\ICar.cs" />
+    <Compile Include="Car\Tesla.cs" />
+    <Compile Include="Car\Toyota.cs" />
+    <Compile Include="Game\Games\GTA.cs" />
+    <Compile Include="Game\Games\IGame.cs" />
+    <Compile Include="Game\Games\LOL.cs" />
+    <Compile Include="Game\Platform\IGamePlatform.cs" />
+    <Compile Include="Game\Platform\PC.cs" />
+    <Compile Include="Game\Platform\PS5.cs" />
+    <Compile Include="Game\Platform\XBOX.cs" />
+    <Compile Include="Game\Games\原神.cs" />
+    <Compile Include="House\BigHouse.cs" />
+    <Compile Include="House\IHouse.cs" />
+    <Compile Include="IPeople.cs" />
+    <Compile Include="People.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceContainer.cs" />
+    <Compile Include="ServiceDescriptor.cs" />
+    <Compile Include="ServiceLifetime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
