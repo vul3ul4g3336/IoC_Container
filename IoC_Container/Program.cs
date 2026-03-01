@@ -24,7 +24,8 @@ namespace IoC_Container
 
 
            var arg = typeof(IGamePlatform<原神>).GetGenericArguments();
-            ServiceContainer container = new ServiceContainer();
+            ServiceCollection container = new ServiceCollection();
+            ServiceProvider serviceProvider = new ServiceProvider(container);
             container.AddSingleton<ICar, Tesla>();
             container.AddSingleton<ICar, Toyota>();
             container.AddTransient<ICar>(() =>
@@ -63,7 +64,7 @@ namespace IoC_Container
 
             // IEnumerable<IGamePlatform<IGame>>
             // IGamePlatform<IGame>
-            IPeople people =  container.GetService<IPeople>();
+            IPeople people = serviceProvider.GetService<IPeople>();
             people.Launch();
             Console.ReadKey();
 

@@ -23,17 +23,18 @@ namespace IoC_Container
         }
         public void Launch()
         {
-            cars.ToList().ForEach(car => {
+            cars.ToList().ForEach(car =>
+            {
 
                 car.ShowInfo();
                 car.Drive();
             });
 
-     
+
             house.ShowInfo();
             house.Live();
             gamePlatform.Launch();
-            
+
         }
     }
 }
