@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A2FD6AB-CF5C-4242-A960-8791B090F7A5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>IoC_Container</RootNamespace>
-    <AssemblyName>IoC_Container</AssemblyName>
+    <ProjectGuid>{F4267FA3-8675-46B2-A3F6-3C9EC52FE9D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NLog_DI</RootNamespace>
+    <AssemblyName>NLog_DI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,10 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IOCServiceCollection">
+      <HintPath>..\IOCServiceCollection\bin\Debug\IOCServiceCollection.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -122,46 +122,60 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarFactory\TeslaFactory.cs" />
-    <Compile Include="CarFactory\HouseFactory.cs" />
-    <Compile Include="CarFactory\IFactory.cs" />
-    <Compile Include="Car\BANZ.cs" />
-    <Compile Include="Car\BMW.cs" />
-    <Compile Include="Car\ICar.cs" />
-    <Compile Include="Car\Tesla.cs" />
-    <Compile Include="Car\Toyota.cs" />
-    <Compile Include="Game\Games\GTA.cs" />
-    <Compile Include="Game\Games\IGame.cs" />
-    <Compile Include="Game\Games\LOL.cs" />
-    <Compile Include="Game\Platform\IGamePlatform.cs" />
-    <Compile Include="Game\Platform\PC.cs" />
-    <Compile Include="Game\Platform\PS5.cs" />
-    <Compile Include="Game\Platform\XBOX.cs" />
-    <Compile Include="Game\Games\原神.cs" />
-    <Compile Include="House\BigHouse.cs" />
-    <Compile Include="House\IHouse.cs" />
-    <Compile Include="IPeople.cs" />
-    <Compile Include="People.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceCollection.cs" />
-    <Compile Include="ServiceProvider.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="Runner.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IoC_Container\IoC_Container.csproj">
+      <Project>{5A2FD6AB-CF5C-4242-A960-8791B090F7A5}</Project>
+      <Name>IoC_Container</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

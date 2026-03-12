@@ -28,7 +28,7 @@ namespace IoC_Container
             ServiceProvider serviceProvider = new ServiceProvider(container);
             container.AddSingleton<ICar, Tesla>();
             container.AddSingleton<ICar, Toyota>();
-            container.AddTransient<ICar>(() =>
+            container.AddTransient<ICar>(x =>
             {
                 ICar[] cars = { new BMW(), new BANZ() };
 
@@ -41,7 +41,7 @@ namespace IoC_Container
             container.AddTransient(typeof(IGamePlatform<>), typeof(PC<>));
             //container.AddTransient<IGame, 原神>();
 
-            container.AddTransient<IGame>(() =>
+            container.AddTransient<IGame>(x =>
             {
                 string gameName = "";
                 switch (game)
